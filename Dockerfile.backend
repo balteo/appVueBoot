@@ -1,5 +1,11 @@
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
-ARG JAR_FILE
-COPY ${JAR_FILE} backend.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/backend.jar"]
+
+COPY backend backend/
+WORKDIR backend
+
+#ARG JAR_FILE
+#COPY ${JAR_FILE} backend.jar
+
+COPY /backend/build/libs/demo-0.0.1-SNAPSHOT.jar backend.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","./backend.jar"]
