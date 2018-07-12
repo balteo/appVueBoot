@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres
+  labels:
+    name: postgres
+spec:
+  containers:
+    - image: launcher.gcr.io/google/postgresql9
+      name: postgres
+      env:
+        - name: "POSTGRES_PASSWORD"
+          value: "demo"
+        - name: "POSTGRES_USER"
+          value: "demo"
