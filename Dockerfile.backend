@@ -10,5 +10,6 @@ RUN cd backend; ./gradlew assemble
 #ARG JAR_FILE
 #COPY ${JAR_FILE} backend.jar
 
-COPY /backend/build/libs/demo-0.0.1-SNAPSHOT.jar backend.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","./backend.jar"]
+#RUN cp backend/build/libs/demo-0.0.1-SNAPSHOT.jar
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","./backend/build/libs/demo-0.0.1-SNAPSHOT.jar"]
