@@ -1,8 +1,11 @@
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 
-COPY backend backend/
-WORKDIR backend
+#WORKDIR backend
+
+COPY backend/ /backend/
+
+RUN cd backend; ./gradlew assemble
 
 #ARG JAR_FILE
 #COPY ${JAR_FILE} backend.jar
